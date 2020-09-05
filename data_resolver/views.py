@@ -183,262 +183,283 @@ def uploadfile(request):
 
 # json文件写入数据库表
 def read_json_data(url):
-    with open(url,'rb') as data:
+    mscode = '302'
+    with open(url,'r',encoding='utf-8') as data:
         parsed_json = json.load(data)
-    for item in parsed_json:
-        if '111' == item['id'][12:15]:
-            disaster = DeathStatics.objects.create(
-                id = item['id'], 
-                location = item['location'],
-                date = item['date'],
-                number = item['number'],
-                reporting_unit = item['reporting_unit']
-            )
+    for item in parsed_json['results']:
+            if '111' == item['id'][12:15]:
+                disaster = DeathStatics.objects.create(
+                    id = item['id'],
+                    location = item['location'],
+                    date = item['date'],
+                    number = item['number'],
+                    reporting_unit = mscode + item['reporting_unit']
+                )
+            elif '112' == item['id'][12:15]:
+                disaster = InjuredStatics.objects.create(
+                    id = item['id'],
+                    location = item['location'],
+                    date = item['date'],
+                    number = item['number'],
+                    reporting_unit = mscode + item['reporting_unit']
+                )
+            elif '113' == item['id'][12:15]:
+                disaster = MissingStatics.objects.create(
+                    id = item['id'],
+                    location = item['location'],
+                    date = item['date'],
+                    number = item['number'],
+                    reporting_unit = mscode + item['reporting_unit']
+                )
+
+
+            elif '221' == item['id'][12:15]:
+                disaster = CivilStructure.objects.create(
+                    id = item['id'],
+                    date = item['date'],
+                    location = item['location'],
+                    basically_intact_square = item['basically_intact_square'],
+                    damaged_square = item['damaged_square'],
+                    destroyed_square = item['destroyed_square'],
+                    note = item['note'],
+                    reporting_unit = mscode + item['reporting_unit']
+                )
+            elif '222' == item['id'][12:15]:
+                disaster = BrickwoodStructure.objects.create(
+                    id = item['id'],
+                    date = item['date'],
+                    location = item['location'],
+                    basically_intact_square = item['basically_intact_square'],
+                    damaged_square = item['damaged_square'],
+                    destroyed_square = item['destroyed_square'],
+                    note = item['note'],
+                    reporting_unit = mscode + item['reporting_unit']
+                )
+            elif '223' == item['id'][12:15]:
+                disaster = MasonryStructure.objects.create(
+                    id = item['id'],
+                    date = item['date'],
+                    location = item['location'],
+                    basically_intact_square = item['basically_intact_square'],
+                    slight_damaged_square = item['slight_damaged_square'],
+                    moderate_damaged_square = item['moderate_damaged_square'],
+                    serious_damaged_square  = item['serious_damaged_square'],
+                    destroyed_square = item['destroyed_square'],
+                    note = item['note'],
+                    reporting_unit = mscode + item['reporting_unit']
+                )
+            elif '224' == item['id'][12:15]:
+                disaster = FrameworkStructure.objects.create(
+                    id = item['id'],
+                    date = item['date'],
+                    location = item['location'],
+                    basically_intact_square = item['basically_intact_square'],
+                    slight_damaged_square = item['slight_damaged_square'],
+                    moderate_damaged_square = item['moderate_damaged_square'],
+                    serious_damaged_square  = item['serious_damaged_square'],
+                    destroyed_square = item['destroyed_square'],
+                    note = item['note'],
+                    reporting_unit = mscode + item['reporting_unit']
+                )
+            elif '225' == item['id'][12:15]:
+                disaster = OtherStructure.objects.create(
+                    id = item['id'],
+                    date = item['date'],
+                    location = item['location'],
+                    basically_intact_square = item['basically_intact_square'],
+                    slight_damaged_square = item['slight_damaged_square'],
+                    moderate_damaged_square = item['moderate_damaged_square'],
+                    serious_damaged_square  = item['serious_damaged_square'],
+                    destroyed_square = item['destroyed_square'],
+                    note = item['note'],
+                    reporting_unit=mscode + item['reporting_unit']
+                )
+
+
+            elif '336' == item['id'][12:15]:
+                disaster = CommDisaster.objects.create(
+                    id = item['id'],
+                    date = item['date'],
+                    location = item['location'],
+                    type = item['type'],
+                    grade = item['grade'],
+                    #picture = item['picture'],
+                    #note = item['note'],
+                    #reporting_unit = mscode + item['reporting_unit']
+                    reporting_unit = mscode
+                )
+            elif '331' == item['id'][12:15]:
+                disaster = TrafficDisaster.objects.create(
+                    id = item['id'],
+                    date = item['date'],
+                    location = item['location'],
+                    type = item['type'],
+                    grade = item['grade'],
+                    #picture = item['picture'],
+                    #note = item['note'],
+                    #reporting_unit = mscode + item['reporting_unit']
+                    reporting_unit=mscode
+                )
+            elif '332' == item['id'][12:15]:
+                disaster = WaterDisaster.objects.create(
+                    id = item['id'],
+                    date = item['date'],
+                    location = item['location'],
+                    type = item['type'],
+                    grade = item['grade'],
+                    #picture = item['picture'],
+                    #note = item['note'],
+                    #reporting_unit = mscode + item['reporting_unit']
+                    reporting_unit=mscode
+                )
+            elif '333' == item['id'][12:15]:
+                disaster = OilDisaster.objects.create(
+                    id = item['id'],
+                    date = item['date'],
+                    location = item['location'],
+                    type = item['type'],
+                    grade = item['grade'],
+                    #picture = item['picture'],
+                    #note = item['note'],
+                    #reporting_unit = item['reporting_unit']
+                    reporting_unit=mscode
+                )
+            elif '334' == item['id'][12:15]:
+                disaster = GasDisaster.objects.create(
+                    id = item['id'],
+                    date = item['date'],
+                    location = item['location'],
+                    type = item['type'],
+                    grade = item['grade'],
+                    #picture = item['picture'],
+                    #note = item['note'],
+                    #reporting_unit = mscode + item['reporting_unit']
+                    reporting_unit=mscode
+                )
+            elif '335' == item['id'][12:15]:
+                disaster = PowerDisaster.objects.create(
+                    id = item['id'],
+                    date = item['date'],
+                    location = item['location'],
+                    type = item['type'],
+                    grade = item['grade'],
+                    #picture = item['picture'],
+                    #note = item['note'],
+                    #reporting_unit = mscode + item['reporting_unit']
+                    reporting_unit=mscode
+                )
+            elif '337' == item['id'][12:15]:
+                disaster = IrrigationDisaster.objects.create(
+                    id = item['id'],
+                    date = item['date'],
+                    location = item['location'],
+                    type = item['type'],
+                    grade = item['grade'],
+                    #picture = item['picture'],
+                    #note = item['note'],
+                    #reporting_unit = mscode + item['reporting_unit']
+                    reporting_unit=mscode
+                )
+
+
+            elif '441' == item['id'][12:15]:
+                disaster = CollapseRecord.objects.create(
+                    id = item['id'],
+                    location = item['location'],
+                    date = item['date'],
+                    type = item['type'],
+                    status = item['status'],
+                    #note = item['note'],
+                    #picture = item.picture['picture'],
+                    #reporting_unit = mscode + item['reporting_unit']
+                    reporting_unit=mscode
+                )
+            elif '442' == item['id'][12:15]:
+                disaster = LandslideRecord.objects.create(
+                    id = item['id'],
+                    location = item['location'],
+                    date = item['date'],
+                    type = item['type'],
+                    status = item['status'],
+                    #note = item['note'],
+                    #picture = item.picture['picture'],
+                    #reporting_unit = mscode + item['reporting_unit']
+                    reporting_unit=mscode
+                )
+            elif '443' == item['id'][12:15]:
+                disaster = DebrisRecord.objects.create(
+                    id = item['id'],
+                    location = item['location'],
+                    date = item['date'],
+                    type = item['type'],
+                    status = item['status'],
+                    #note = item['note'],
+                    #picture = item.picture['picture'],
+                    #reporting_unit = mscode + item['reporting_unit']
+                    reporting_unit=mscode
+                )
+            elif '444' == item['id'][12:15]:
+                disaster = KarstRecord.objects.create(
+                    id = item['id'],
+                    location = item['location'],
+                    date = item['date'],
+                    type = item['type'],
+                    status = item['status'],
+                    #note = item['note'],
+                    #picture = item.picture['picture'],
+                    #reporting_unit = mscode + item['reporting_unit']
+                    reporting_unit=mscode
+                )
+            elif '445' == item['id'][12:15]:
+                disaster = CrackRecord.objects.create(
+                    id = item['id'],
+                    location = item['location'],
+                    date = item['date'],
+                    type = item['type'],
+                    status = item['status'],
+                    #note = item['note'],
+                    #picture = item.picture['picture'],
+                    #reporting_unit = mscode + item['reporting_unit']
+                    reporting_unit=mscode
+                )
+            elif '446' == item['id'][12:15]:
+                disaster = SettlementRecord.objects.create(
+                    id = item['id'],
+                    location = item['location'],
+                    date = item['date'],
+                    type = item['type'],
+                    status = item['status'],
+                    #note = item['note'],
+                    #picture = item.picture['picture'],
+                    #reporting_unit = mscode + item['reporting_unit']
+                    reporting_unit=mscode
+                )
+            elif '447' == item['id'][12:15]:
+                disaster = OtherRecord.objects.create(
+                    id = item['id'],
+                    location = item['location'],
+                    date = item['date'],
+                    type = item['type'],
+                    status = item['status'],
+                    #note = item['note'],
+                    #picture = item.picture['picture'],
+                    #reporting_unit = mscode + item['reporting_unit']
+                    reporting_unit=mscode
+                )
+            elif '551' == item['id'][12:15]:
+                disaster = DisasterInfo.objects.create(
+                    id = item['id'],
+                    date = item['date'],
+                    location = item['location'],
+                    longtitude = item['longtitude'],
+                    latitude = item['latitude'],
+                    depth = item['depth'],
+                    magnitude = item['magnitude'],
+                    #picture = item['picture'],
+                    #reporting_unit = mscode + item['reporting_unit']
+                    reporting_unit=mscode
+                )
             disaster.save()
-        elif '112' == item['id'][12:15]:
-            disaster = InjuredStatics.objects.create(
-                id = item['id'], 
-                location = item['location'],
-                date = item['date'],
-                number = item['number'],
-                reporting_unit = item['reporting_unit']
-            )
-        elif '113' == item['id'][12:15]:
-            disaster = MissingStatics.objects.create(
-                id = item['id'], 
-                location = item['location'],
-                date = item['date'],
-                number = item['number'],
-                reporting_unit = item['reporting_unit']
-            )
-
-
-        elif '221' == item['id'][12:15]:
-            disaster = CivilStructure.objects.create(
-                id = item['id'], 
-                date = item['date'],
-                location = item['location'],
-                basically_intact_square = item['basically_intact_square'],
-                damaged_square = item['damaged_square'],
-                destroyed_square = item['destroyed_square'],
-                note = item['note'],
-                reporting_unit = item['reporting_unit']
-            )
-        elif '222' == item['id'][12:15]:
-            disaster = BrickwoodStructure.objects.create(
-                id = item['id'], 
-                date = item['date'],
-                location = item['location'],
-                basically_intact_square = item['basically_intact_square'],
-                damaged_square = item['damaged_square'],
-                destroyed_square = item['destroyed_square'],
-                note = item['note'],
-                reporting_unit = item['reporting_unit']
-            )
-        elif '223' == item['id'][12:15]:
-            disaster = MasonryStructure.objects.create(
-                id = item['id'], 
-                date = item['date'],
-                location = item['location'],
-                basically_intact_square = item['basically_intact_square'],
-                damaged_square = item['damaged_square'],
-                destroyed_square = item['destroyed_square'],
-                note = item['note'],
-                reporting_unit = item['reporting_unit']
-            )
-        elif '224' == item['id'][12:15]:
-            disaster = FrameworkStructure.objects.create(
-                id = item['id'], 
-                date = item['date'],
-                location = item['location'],
-                basically_intact_square = item['basically_intact_square'],
-                damaged_square = item['damaged_square'],
-                destroyed_square = item['destroyed_square'],
-                note = item['note'],
-                reporting_unit = item['reporting_unit']
-            )
-        elif '225' == item['id'][12:15]:
-            disaster = OtherStructure.objects.create(
-                id = item['id'], 
-                date = item['date'],
-                location = item['location'],
-                basically_intact_square = item['basically_intact_square'],
-                damaged_square = item['damaged_square'],
-                destroyed_square = item['destroyed_square'],
-                note = item['note'],
-                reporting_unit = item['reporting_unit']
-            )
-
-
-        elif '336' == item['id'][12:15]:
-            disaster = CommDisaster.objects.create(
-                id = item['id'], 
-                date = item['date'],
-                location = item['location'],
-                type = item['type'],
-                grade = item['grade'],
-                picture = item['picture'],
-                note = item['note'],
-                reporting_unit = item['reporting_unit']
-            )
-        elif '331' == item['id'][12:15]:
-            disaster = TrafficDisaster.objects.create(
-                id = item['id'], 
-                date = item['date'],
-                location = item['location'],
-                type = item['type'],
-                grade = item['grade'],
-                picture = item['picture'],
-                note = item['note'],
-                reporting_unit = item['reporting_unit']
-            )
-        elif '332' == item['id'][12:15]:
-            disaster = WaterDisaster.objects.create(
-                id = item['id'], 
-                date = item['date'],
-                location = item['location'],
-                type = item['type'],
-                grade = item['grade'],
-                picture = item['picture'],
-                note = item['note'],
-                reporting_unit = item['reporting_unit']
-            )
-        elif '333' == item['id'][12:15]:
-            disaster = OilDisaster.objects.create(
-                id = item['id'], 
-                date = item['date'],
-                location = item['location'],
-                type = item['type'],
-                grade = item['grade'],
-                picture = item['picture'],
-                note = item['note'],
-                reporting_unit = item['reporting_unit']
-            )
-        elif '334' == item['id'][12:15]:
-            disaster = GasDisaster.objects.create(
-                id = item['id'], 
-                date = item['date'],
-                location = item['location'],
-                type = item['type'],
-                grade = item['grade'],
-                picture = item['picture'],
-                note = item['note'],
-                reporting_unit = item['reporting_unit']
-            )
-        elif '335' == item['id'][12:15]:
-            disaster = PowerDisaster.objects.create(
-                id = item['id'], 
-                date = item['date'],
-                location = item['location'],
-                type = item['type'],
-                grade = item['grade'],
-                picture = item['picture'],
-                note = item['note'],
-                reporting_unit = item['reporting_unit']
-            )
-        elif '337' == item['id'][12:15]:
-            disaster = IrrigationDisaster.objects.create(
-                id = item['id'], 
-                date = item['date'],
-                location = item['location'],
-                type = item['type'],
-                grade = item['grade'],
-                picture = item['picture'],
-                note = item['note'],
-                reporting_unit = item['reporting_unit']
-            )
-
-
-        elif '441' == item['id'][12:15]:
-            disaster = CollapseRecord.objects.create(
-                id = item['id'], 
-                location = item['location'],
-                date = item['date'],
-                type = item['type'],
-                status = item['status'],
-                note = item['note'],
-                picture = item.picture['picture'],
-                reporting_unit = item['reporting_unit']
-            )
-        elif '442' == item['id'][12:15]:
-            disaster = LandslideRecord.objects.create(
-                id = item['id'], 
-                location = item['location'],
-                date = item['date'],
-                type = item['type'],
-                status = item['status'],
-                note = item['note'],
-                picture = item.picture['picture'],
-                reporting_unit = item['reporting_unit']
-            )
-        elif '443' == item['id'][12:15]:
-            disaster = DebrisRecord.objects.create(
-                id = item['id'], 
-                location = item['location'],
-                date = item['date'],
-                type = item['type'],
-                status = item['status'],
-                note = item['note'],
-                picture = item.picture['picture'],
-                reporting_unit = item['reporting_unit']
-            )
-        elif '444' == item['id'][12:15]:
-            disaster = KarstRecord.objects.create(
-                id = item['id'], 
-                location = item['location'],
-                date = item['date'],
-                type = item['type'],
-                status = item['status'],
-                note = item['note'],
-                picture = item.picture['picture'],
-                reporting_unit = item['reporting_unit']
-            )
-        elif '445' == item['id'][12:15]:
-            disaster = CrackRecord.objects.create(
-                id = item['id'], 
-                location = item['location'],
-                date = item['date'],
-                type = item['type'],
-                status = item['status'],
-                note = item['note'],
-                picture = item.picture['picture'],
-                reporting_unit = item['reporting_unit']
-            )
-        elif '446' == item['id'][12:15]:
-            disaster = SettlementRecord.objects.create(
-                id = item['id'], 
-                location = item['location'],
-                date = item['date'],
-                type = item['type'],
-                status = item['status'],
-                note = item['note'],
-                picture = item.picture['picture'],
-                reporting_unit = item['reporting_unit']
-            )
-        elif '447' == item['id'][12:15]:
-            disaster = OtherRecord.objects.create(
-                id = item['id'], 
-                location = item['location'],
-                date = item['date'],
-                type = item['type'],
-                status = item['status'],
-                note = item['note'],
-                picture = item.picture['picture'],
-                reporting_unit = item['reporting_unit']
-            )
-        elif '551' == item['id'][12:15]:
-            disaster = DisasterInfo.objects.create(
-                id = item['id'],
-                date = item['date'],
-                location = item['location'],
-                longtitude = item['longtitude'],
-                latitude = item['latitude'],
-                depth = item['depth'],
-                magnitude = item['magnitude'],
-                picture = item['picture'],
-                reporting_unit = item['reporting_unit']
-            )
-
     # disaster = CommDisaster()
     # json_data = open(url)
     # json_load = json.load(json_data)
