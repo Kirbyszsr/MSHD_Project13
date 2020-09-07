@@ -25,7 +25,7 @@ from django.http import HttpResponseRedirect
 from django.http import JsonResponse
 import json
 import os
-
+import datetime
 #  Create your views here.
 disaster_type_dictionary = {
     '111': DeathStatics, '112':InjuredStatics, '113':MissingStatics,
