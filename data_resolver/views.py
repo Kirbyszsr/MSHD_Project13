@@ -502,6 +502,18 @@ def read_json_data(url):
     #     parsed_json = json.load(data)
     # return parsed_json
 
+def send_DeathStatics(request):
+    JS_Returnval = []
+    for items in DeathStatics.objects.all():
+         resultOBJ = {}
+         resultOBJ["id"] = items.id
+         resultOBJ["date"] = items.date
+         resultOBJ["location"] = items.location
+         resultOBJ["number"] = items.number
+         #resultOBJ["picture"] = items.picture
+         resultOBJ["reporting_unit"] = items.reporting_unit
+         JS_Returnval = JS_Returnval + [resultOBJ]      
+    return JsonResponse({"results":JS_Returnval})
 
 def insert_DeathStatics(request):
     d_statics = DeathStatics()
