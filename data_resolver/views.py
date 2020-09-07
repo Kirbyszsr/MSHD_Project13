@@ -16,10 +16,8 @@ from .models import CollapseRecord, LandslideRecord, DebrisRecord, KarstRecord, 
 #  震情
 from .models import DisasterInfo, DisatserPrediction, DisasterRequest
 
+from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404,  render, redirect
-
-import copy
-
 #  from .models import day, todo
 from django.http import JsonResponse
 from django.http import HttpResponseRedirect
@@ -38,11 +36,6 @@ disaster_type_dictionary = {
     '551':DisasterInfo,'552':DisatserPrediction,
 }
 # 代号和代号类的对应表
-
-address_dictionary = {
-    '松原':'331111111111'
-}
-#地址的对应表
 
 def register(request):
     return render(request, 'lyear_pages_register.html')
@@ -179,6 +172,8 @@ def import_json_data(url, test_disaster):
 def uploadfile(request):
     if request.method == "POST":
         file = request.FILES.get('example-file-input')
+        if file is None:
+             return HttpResponseRedirect('details_DisasterRequest')
         BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         path = os.path.join(BASE_DIR, 'data_resolver','static', 'data', file.name)
         f = open(path, 'wb')
@@ -189,30 +184,12 @@ def uploadfile(request):
             read_json_data(path)
     return JsonResponse({"status":"success"})
 
-#检查并重新一体化编码
-def verify(item):
-    item_checked = copy.deepcopy(item)
-    sum = disaster_type_dictionary[item['id'][12:15]].objects.count() % 10000
-    #用sum一体化编码保证编码在10000条以内不重复
-    address_code = None
-    for key in address_dictionary.keys():
-    #查找
-        if key in item['location']:
-            address_code = address_dictionary[key]
-    if address_code is None:
-        address_code = item['id'][0:12]
-    new_id = address_code + item['id'][12:15] + ('%04d' % sum)
-    #重新连接id
-    item_checked['id'] = new_id
-    return item_checked
-
 # json文件写入数据库表
 def read_json_data(url):
     mscode = '302'
     with open(url,'r',encoding='utf-8') as data:
         parsed_json = json.load(data)
-    for rawitem in parsed_json['results']:
-            item = verify(rawitem) 
+    for item in parsed_json['results']:
             if '111' == item['id'][12:15]:
                 disaster = DeathStatics.objects.create(
                     id = item['id'],
@@ -1396,13 +1373,14 @@ def del_DisasterRequest(request):
     return redirect('details_DisasterRequest')
 
 def index_20200504(request):
-    return render(request, 'index_20200504.html', )
+    return render(request, 'index_20200504.html')
 
-def index_20200514(request):
-    return render(request, 'index_20200514.html', )
 
 def index_20200519(request):
-    return render(request, 'index_20200519.html', )
+    return render(request, 'index_20200519.html')
+
+def index_20200514(request):
+    return render(request, 'index_20200514.html')
 
 def details_xmxx(request):
     DeathStatics_records = DeathStatics.objects.all()

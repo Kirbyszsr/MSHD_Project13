@@ -312,11 +312,20 @@
                         </form>
                     </tbody>
                   </table>
-                    <form enctype="multipart/form-data" action="uploadfile" method="post">
+                </div>
+              </div>
+            </div>
+           <div class="card">
+              <div class="card-header">
+                <h4>载入外部信息文件</h4>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                    <form enctype="multipart/form-data" required="true" action="uploadfile" method="post">
                     <div class="col-xs-12">
                       {% csrf_token %}
                       <input type="file" id="example-file-input" name="example-file-input">
-                      <input type="submit" value="upload" />
+                      <input type="submit" value="现在上传" />
                     </div>
                     </form>
                 </div>
