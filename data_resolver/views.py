@@ -215,8 +215,7 @@ def verify(item):
 
 
 # json文件写入数据库表
-def read_json_data(url):
-    mscode = '302'
+def read_json_data(url,mscode = '302'):
     with open(url,'r',encoding='utf-8') as data:
         parsed_json = json.load(data)
     for rawitem in parsed_json['results']:
