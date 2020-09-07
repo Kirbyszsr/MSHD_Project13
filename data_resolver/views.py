@@ -195,8 +195,8 @@ def uploadfile(request):
 #检查并重新一体化编码
 def verify(item):
     item_checked = copy.deepcopy(item)
-    sum = disaster_type_dictionary[item['id'][12:15]].objects.count() % 10000
-    #用sum一体化编码保证编码在10000条以内不重复
+    sum = disaster_type_dictionary[item['id'][12:15]].objects.count() % 1000
+    #用sum一体化编码保证编码在1000条以内不重复
     address_code = None
     for key in address_dictionary.keys():
     #查找
@@ -204,7 +204,7 @@ def verify(item):
             address_code = address_dictionary[key]
     if address_code is None:
         address_code = item['id'][0:12]
-    new_id = address_code + item['id'][12:15] + ('%04d' % sum)
+    new_id = address_code + item['id'][12:15] + ('%03d' % sum)  + '8'
     #重新连接id
     item_checked['id'] = new_id
 
@@ -507,11 +507,11 @@ def send_DeathStatics(request):
     for items in DeathStatics.objects.all():
          resultOBJ = {}
          resultOBJ["id"] = items.id
-         resultOBJ["date"] = items.date
-         resultOBJ["location"] = items.location
-         resultOBJ["number"] = items.number
+         #resultOBJ["date"] = items.date
+         #resultOBJ["location"] = items.location
+         #resultOBJ["number"] = items.number
          #resultOBJ["picture"] = items.picture
-         resultOBJ["reporting_unit"] = items.reporting_unit
+         #resultOBJ["reporting_unit"] = items.reporting_unit
          JS_Returnval = JS_Returnval + [resultOBJ]      
     return JsonResponse({"results":JS_Returnval})
 
