@@ -23,8 +23,9 @@ from django.http import JsonResponse
 from django.http import HttpResponseRedirect
 import json
 import os
-
 import copy
+import datetime,time
+
 
 #  Create your views here.
 disaster_type_dictionary = {
@@ -190,10 +191,7 @@ def uploadfile(request):
         f.close()
         if file.name[-5:] == '.json':
             read_json_data(path)
-    return render(request, 'details_DisasterRequest.html', 
-    {
-        'DisasterRequest_records': DisasterRequest_records, 'isSucceed': true,
-    })
+    return details_DisasterRequest(request,True)
 
 #检查并重新一体化编码
 def verify(item):
@@ -210,6 +208,10 @@ def verify(item):
     new_id = address_code + item['id'][12:15] + ('%04d' % sum)
     #重新连接id
     item_checked['id'] = new_id
+
+    #时间修正
+    currentdate = datetime.datetime.now().strftime("%Y%m%d%X").replace(':','')
+    item_checked['date'] = currentdate
     return item_checked
 
 
@@ -1409,6 +1411,19 @@ def index_20200504(request):
 def index_20200519(request):
     return render(request, 'index_20200519.html')
 
+def getStatistics():
+     total = {}
+     todayCounts = 0
+     todayDeaths = 0
+     historyCounts = 0
+     historyDeaths = 0
+     total['todayCount'] = '%d' % todayCounts
+     total['todayDeaths'] = '%d' % todayDeaths 
+     total['historyCounts'] = '%d' % historyCounts
+     total['historyDeaths'] = '%d' % historyDeaths
+     return total
+     
+
 def index_20200514(request):
     return render(request, 'index_20200514.html')
 
@@ -1674,17 +1689,20 @@ def details_DisatserPrediction(request):
     )
 
 def details_DisasterRequest(request):
+    return details_DisasterRequest(request, False)
+
+def details_DisasterRequest(request,isSucceed=False):
     DisasterRequest_records = DisasterRequest.objects.all()
     
     return render(request, 'details_DisasterRequest.html', 
     {
-        'DisasterRequest_records': DisasterRequest_records, 'isSucceed': False,
+        'DisasterRequest_records': DisasterRequest_records, 'isSucceed': isSucceed,
     }
     )
 
 
 def index(request):
-    return render(request, 'index.html', )
+    return index_20200519(request)
 
 
 # 测试灾情编码的映射
