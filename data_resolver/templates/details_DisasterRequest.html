@@ -102,6 +102,34 @@
           </div>
           
           <ul class="topbar-right">
+<<<<<<< HEAD
+          <li class="dropdown dropdown-profile">
+            <a href="javascript:void(0)" data-toggle="dropdown">
+              <img class="img-avatar img-avatar-48 m-r-10" src="{% static "images/users/avatar.jpg" %}" alt="笔下光年" />
+              {% if username is None %}
+                <span>游客登录<span class="caret"></span></span>
+              {% else %}
+                <span>{{username}}<span class="caret"></span></span>
+              {% endif %}
+            </a>
+
+          {% if username is None %}
+          <ul class="dropdown-menu dropdown-menu-right">
+            <li> <a href="login"><i class="mdi mdi-logout-variant"></i> 登录</a> </li>
+            <li class="divider"></li>
+            <li> <a href="{% static "lyear_pages_edit_pwd.html" %}"><i class="mdi mdi-lock-outline"></i> 注册</a> </li>
+          </ul>
+          {% else %}
+          <ul class="dropdown-menu dropdown-menu-right">
+            <li> <a href="{% static "lyear_pages_profile.html" %}"><i class="mdi mdi-account"></i> 个人信息</a> </li>
+            <li> <a href="{% static "lyear_pages_edit_pwd.html" %}"><i class="mdi mdi-lock-outline"></i> 修改密码</a> </li>
+            <li> <a href="javascript:void(0)"><i class="mdi mdi-delete"></i> 清空缓存</a></li>
+            <li class="divider"></li>
+            <li> <a href="login"><i class="mdi mdi-logout-variant"></i> 退出登录</a> </li>
+          </ul>
+          {% endif %}
+        </li>
+=======
             <li class="dropdown dropdown-profile">
               <a href="javascript:void(0)" data-toggle="dropdown">
                 <img class="img-avatar img-avatar-48 m-r-10" src="{% static "images/users/avatar.jpg" %}" alt="笔下光年" />
@@ -115,6 +143,7 @@
                 <li> <a href="{% static "lyear_pages_login.html" %}"><i class="mdi mdi-logout-variant"></i> 退出登录</a> </li>
               </ul>
             </li>
+>>>>>>> edb34653d679429b0461f4c57d1574c628cb1793
             <!--切换主题配色-->
 		    <li class="dropdown dropdown-skin">
 			  <span data-toggle="dropdown" class="icon-palette"><i class="mdi mdi-palette"></i></span>
@@ -312,6 +341,13 @@
                         </form>
                     </tbody>
                   </table>
+<<<<<<< HEAD
+                    <form enctype="multipart/form-data" action="uploadfile" method="post">
+                    <div class="col-xs-12">
+                      {% csrf_token %}
+                      <input type="file" id="example-file-input" name="example-file-input">
+                      <input type="submit" value="upload" />
+=======
                 </div>
               </div>
             </div>
@@ -329,6 +365,7 @@
                       {% if isSucceed %}
                       数据加载完成！
 	      {% endif %}
+>>>>>>> edb34653d679429b0461f4c57d1574c628cb1793
                     </div>
                     </form>
                 </div>
