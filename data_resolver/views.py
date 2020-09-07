@@ -17,6 +17,9 @@ from .models import CollapseRecord, LandslideRecord, DebrisRecord, KarstRecord, 
 from .models import DisasterInfo, DisatserPrediction, DisasterRequest
 
 from django.shortcuts import get_object_or_404,  render, redirect
+
+import copy
+
 #  from .models import day, todo
 from django.http import JsonResponse
 from django.http import HttpResponseRedirect
@@ -181,12 +184,21 @@ def uploadfile(request):
             read_json_data(path)
     return JsonResponse({"status":"success"})
 
+def verify(item):
+    item_checked = copy.deepcopy(item)
+    sum = disaster_type_dictionary[item['id'][12:15]].objects.count() % 10000
+    #用sum一体化编码保证编码在10000条以内不重复
+    new_id = item['id'][0:15] + ('%04d' % sum)
+    item_checked['id'] = new_id
+    return item_checked
+
 # json文件写入数据库表
 def read_json_data(url):
     mscode = '302'
     with open(url,'r',encoding='utf-8') as data:
         parsed_json = json.load(data)
-    for item in parsed_json['results']:
+    for rawitem in parsed_json['results']:
+            item = verify(rawitem) 
             if '111' == item['id'][12:15]:
                 disaster = DeathStatics.objects.create(
                     id = item['id'],
