@@ -39,6 +39,11 @@ disaster_type_dictionary = {
 }
 # 代号和代号类的对应表
 
+address_dictionary = {
+    '松原':'331111111111'
+}
+#地址的对应表
+
 def register(request):
     return render(request, 'lyear_pages_register.html')
 
@@ -184,11 +189,20 @@ def uploadfile(request):
             read_json_data(path)
     return JsonResponse({"status":"success"})
 
+#检查并重新一体化编码
 def verify(item):
     item_checked = copy.deepcopy(item)
     sum = disaster_type_dictionary[item['id'][12:15]].objects.count() % 10000
     #用sum一体化编码保证编码在10000条以内不重复
-    new_id = item['id'][0:15] + ('%04d' % sum)
+    address_code = None
+    for key in address_dictionary.keys():
+    #查找
+        if key in item['location']:
+            address_code = address_dictionary[key]
+    if address_code is None:
+        address_code = item['id'][0:12]
+    new_id = address_code + item['id'][12:15] + ('%04d' % sum)
+    #重新连接id
     item_checked['id'] = new_id
     return item_checked
 
