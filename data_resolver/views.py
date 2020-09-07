@@ -16,31 +16,16 @@ from .models import CollapseRecord, LandslideRecord, DebrisRecord, KarstRecord, 
 #  震情
 from .models import DisasterInfo, DisatserPrediction, DisasterRequest
 
-<<<<<<< HEAD
 from django.shortcuts import get_object_or_404,  render, redirect
 
 import copy
 
-=======
 from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404,  render, redirect
->>>>>>> edb34653d679429b0461f4c57d1574c628cb1793
-#  from .models import day, todo
+#from .models import day, todo
 from django.http import JsonResponse
-from django.http import HttpResponseRedirect
 import json
 import os
-<<<<<<< HEAD
-=======
 
-<<<<<<< HEAD
-=======
->>>>>>> 5a977d7883c7b4210ec2180305cbd1d9988ec2aa
-import copy
-import datetime,time
-
-
->>>>>>> edb34653d679429b0461f4c57d1574c628cb1793
 #  Create your views here.
 disaster_type_dictionary = {
     '111': DeathStatics, '112':InjuredStatics, '113':MissingStatics,
@@ -59,10 +44,6 @@ address_dictionary = {
 }
 #地址的对应表
 
-<<<<<<< HEAD
-=======
-
->>>>>>> edb34653d679429b0461f4c57d1574c628cb1793
 def register(request):
     return render(request, 'lyear_pages_register.html')
 
@@ -198,11 +179,8 @@ def import_json_data(url, test_disaster):
 def uploadfile(request):
     if request.method == "POST":
         file = request.FILES.get('example-file-input')
-<<<<<<< HEAD
-=======
         if file is None:
              return HttpResponseRedirect('details_DisasterRequest')
->>>>>>> edb34653d679429b0461f4c57d1574c628cb1793
         BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         path = os.path.join(BASE_DIR, 'data_resolver','static', 'data', file.name)
         f = open(path, 'wb')
@@ -211,18 +189,8 @@ def uploadfile(request):
         f.close()
         if file.name[-5:] == '.json':
             read_json_data(path)
-<<<<<<< HEAD
     return details_DisasterRequest(request,True)
-=======
-<<<<<<< HEAD
-    return JsonResponse({"status":"success"})
-=======
-    return render(request, 'details_DisasterRequest.html', 
-    {
-        'DisasterRequest_records': DisasterRequest_records, 'isSucceed': true,
-    })
->>>>>>> edb34653d679429b0461f4c57d1574c628cb1793
->>>>>>> 5a977d7883c7b4210ec2180305cbd1d9988ec2aa
+
 
 #检查并重新一体化编码
 def verify(item):
@@ -245,10 +213,7 @@ def verify(item):
     item_checked['date'] = currentdate
     return item_checked
 
-<<<<<<< HEAD
-=======
 
->>>>>>> edb34653d679429b0461f4c57d1574c628cb1793
 # json文件写入数据库表
 def read_json_data(url):
     mscode = '302'
@@ -1439,7 +1404,6 @@ def del_DisasterRequest(request):
     return redirect('details_DisasterRequest')
 
 def index_20200504(request):
-<<<<<<< HEAD
     return render(request, 'index_20200504.html', )
 
 def index_20200514(request):
@@ -1454,12 +1418,6 @@ def index_20200514(request):
 
 def index_20200519(request):
     return render(request, 'index_20200519.html', )
-=======
-    return render(request, 'index_20200504.html')
-
-
-def index_20200519(request):
-    return render(request, 'index_20200519.html')
 
 def getStatistics():
      total = {}
@@ -1473,10 +1431,6 @@ def getStatistics():
      total['historyDeaths'] = '%d' % historyDeaths
      return total
      
-
-def index_20200514(request):
-    return render(request, 'index_20200514.html')
->>>>>>> edb34653d679429b0461f4c57d1574c628cb1793
 
 def details_xmxx(request):
     DeathStatics_records = DeathStatics.objects.all()
@@ -1517,7 +1471,6 @@ def details_DeathStatics(request):
     DisasterInfo_records = DisasterInfo.objects.all()
     DisatserPrediction_records = DisatserPrediction.objects.all()
 
-<<<<<<< HEAD
     username = request.COOKIES.get('name')
     # if username:
     #     context = {'username': username}
@@ -1526,9 +1479,6 @@ def details_DeathStatics(request):
     #     context = {'username': None}
 
     return render(request, 'details_DeathStatics.html',
-=======
-    return render(request, 'details_DeathStatics.html', 
->>>>>>> edb34653d679429b0461f4c57d1574c628cb1793
     {
         'DeathStatics_records': DeathStatics_records, 
         'MissingStatics_records': MissingStatics_records, 
@@ -1539,430 +1489,248 @@ def details_DeathStatics(request):
         'CollapseRecord_records': CollapseRecord_records, 
         'LandslideRecord_records': LandslideRecord_records, 
         'DisasterInfo_records': DisasterInfo_records, 
-<<<<<<< HEAD
         'DisatserPrediction_records': DisatserPrediction_records,
         'username' : username
-=======
-        'DisatserPrediction_records': DisatserPrediction_records, 
->>>>>>> edb34653d679429b0461f4c57d1574c628cb1793
     }
     )
 
 def details_InjuredStatics(request):
     InjuredStatics_records = InjuredStatics.objects.all()
-<<<<<<< HEAD
     username = request.COOKIES.get('name')
     return render(request, 'details_InjuredStatics.html', 
     {
         'InjuredStatics_records': InjuredStatics_records,
         'username' : username,
-=======
-
-    return render(request, 'details_InjuredStatics.html', 
-    {
-        'InjuredStatics_records': InjuredStatics_records, 
->>>>>>> edb34653d679429b0461f4c57d1574c628cb1793
     }
     )
 
 def details_MissingStatics(request):
     MissingStatics_records = MissingStatics.objects.all()
-<<<<<<< HEAD
     username = request.COOKIES.get('name')
     return render(request, 'details_MissingStatics.html', 
     {
         'MissingStatics_records': MissingStatics_records,
         'username': username,
-=======
-
-    return render(request, 'details_MissingStatics.html', 
-    {
-        'MissingStatics_records': MissingStatics_records, 
->>>>>>> edb34653d679429b0461f4c57d1574c628cb1793
     }
     )
 
 def details_CivilStructure(request):
     CivilStructure_records = CivilStructure.objects.all()
-<<<<<<< HEAD
     username = request.COOKIES.get('name')
     return render(request, 'details_CivilStructure.html', 
     {
         'CivilStructure_records': CivilStructure_records,
         'username': username,
-=======
-
-    return render(request, 'details_CivilStructure.html', 
-    {
-        'CivilStructure_records': CivilStructure_records, 
->>>>>>> edb34653d679429b0461f4c57d1574c628cb1793
     }
     )
 
 def details_BrickwoodStructure(request):
     BrickwoodStructure_records = BrickwoodStructure.objects.all()
-<<<<<<< HEAD
     username = request.COOKIES.get('name')
     return render(request, 'details_BrickwoodStructure.html', 
     {
         'BrickwoodStructure_records': BrickwoodStructure_records,
         'username': username,
-=======
-
-    return render(request, 'details_BrickwoodStructure.html', 
-    {
-        'BrickwoodStructure_records': BrickwoodStructure_records, 
->>>>>>> edb34653d679429b0461f4c57d1574c628cb1793
     }
     )
 
 def details_MasonryStructure(request):
     MasonryStructure_records = MasonryStructure.objects.all()
-<<<<<<< HEAD
     username = request.COOKIES.get('name')
     return render(request, 'details_MasonryStructure.html', 
     {
         'MasonryStructure_records': MasonryStructure_records,
         'username': username,
-=======
-
-    return render(request, 'details_MasonryStructure.html', 
-    {
-        'MasonryStructure_records': MasonryStructure_records, 
->>>>>>> edb34653d679429b0461f4c57d1574c628cb1793
     }
     )
 
 def details_FrameworkStructure(request):
     FrameworkStructure_records = FrameworkStructure.objects.all()
-<<<<<<< HEAD
     username = request.COOKIES.get('name')
     return render(request, 'details_FrameworkStructure.html', 
     {
         'FrameworkStructure_records': FrameworkStructure_records,
         'username':username,
-=======
-
-    return render(request, 'details_FrameworkStructure.html', 
-    {
-        'FrameworkStructure_records': FrameworkStructure_records, 
->>>>>>> edb34653d679429b0461f4c57d1574c628cb1793
     }
     )
 
 def details_OtherStructure(request):
     OtherStructure_records = OtherStructure.objects.all()
-<<<<<<< HEAD
     username = request.COOKIES.get('name')
     return render(request, 'details_OtherStructure.html', 
     {
         'OtherStructure_records': OtherStructure_records,
         'username':username,
-=======
-
-    return render(request, 'details_OtherStructure.html', 
-    {
-        'OtherStructure_records': OtherStructure_records, 
->>>>>>> edb34653d679429b0461f4c57d1574c628cb1793
     }
     )
 
 def details_CommDisaster(request):
     CommDisaster_records = CommDisaster.objects.all()
-<<<<<<< HEAD
     username = request.COOKIES.get('name')
     return render(request, 'details_CommDisaster.html', 
     {
         'CommDisaster_records': CommDisaster_records,
         'username':username,
-=======
-
-    return render(request, 'details_CommDisaster.html', 
-    {
-        'CommDisaster_records': CommDisaster_records, 
->>>>>>> edb34653d679429b0461f4c57d1574c628cb1793
     }
     )
 
 def details_TrafficDisaster(request):
     TrafficDisaster_records = TrafficDisaster.objects.all()
-<<<<<<< HEAD
     username = request.COOKIES.get('name')
     return render(request, 'details_TrafficDisaster.html', 
     {
         'TrafficDisaster_records': TrafficDisaster_records,
         'username':username,
-=======
-
-    return render(request, 'details_TrafficDisaster.html', 
-    {
-        'TrafficDisaster_records': TrafficDisaster_records, 
->>>>>>> edb34653d679429b0461f4c57d1574c628cb1793
     }
     )
 
 def details_WaterDisaster(request):
     WaterDisaster_records = WaterDisaster.objects.all()
-<<<<<<< HEAD
     username = request.COOKIES.get('name')
     return render(request, 'details_WaterDisaster.html', 
     {
         'WaterDisaster_records': WaterDisaster_records,
         'username':username,
-=======
-
-    return render(request, 'details_WaterDisaster.html', 
-    {
-        'WaterDisaster_records': WaterDisaster_records, 
->>>>>>> edb34653d679429b0461f4c57d1574c628cb1793
     }
     )
 
 def details_OilDisaster(request):
     OilDisaster_records = OilDisaster.objects.all()
-<<<<<<< HEAD
     username = request.COOKIES.get('name')
     return render(request, 'details_OilDisaster.html', 
     {
         'OilDisaster_records': OilDisaster_records,
         username : 'username',
-=======
-
-    return render(request, 'details_OilDisaster.html', 
-    {
-        'OilDisaster_records': OilDisaster_records, 
->>>>>>> edb34653d679429b0461f4c57d1574c628cb1793
     }
     )
 
 def details_GasDisaster(request):
     GasDisaster_records = GasDisaster.objects.all()
-<<<<<<< HEAD
     username = request.COOKIES.get('name')
     return render(request, 'details_GasDisaster.html', 
     {
         'GasDisaster_records': GasDisaster_records,
         'username':username,
-=======
-
-    return render(request, 'details_GasDisaster.html', 
-    {
-        'GasDisaster_records': GasDisaster_records, 
->>>>>>> edb34653d679429b0461f4c57d1574c628cb1793
     }
     )
 
 def details_PowerDisaster(request):
     PowerDisaster_records = PowerDisaster.objects.all()
-<<<<<<< HEAD
     username = request.COOKIES.get('name')
     return render(request, 'details_PowerDisaster.html', 
     {
         'PowerDisaster_records': PowerDisaster_records,
         'username':username,
-=======
-
-    return render(request, 'details_PowerDisaster.html', 
-    {
-        'PowerDisaster_records': PowerDisaster_records, 
->>>>>>> edb34653d679429b0461f4c57d1574c628cb1793
     }
     )
 
 def details_IrrigationDisaster(request):
     IrrigationDisaster_records = IrrigationDisaster.objects.all()
-<<<<<<< HEAD
     username = request.COOKIES.get('name')
     return render(request, 'details_IrrigationDisaster.html', 
     {
         'IrrigationDisaster_records': IrrigationDisaster_records,
         'username': username,
-=======
-
-    return render(request, 'details_IrrigationDisaster.html', 
-    {
-        'IrrigationDisaster_records': IrrigationDisaster_records, 
->>>>>>> edb34653d679429b0461f4c57d1574c628cb1793
     }
     )
 
 def details_CollapseRecord(request):
     CollapseRecord_records = CollapseRecord.objects.all()
-<<<<<<< HEAD
     username = request.COOKIES.get('name')
     return render(request, 'details_CollapseRecord.html', 
     {
         'CollapseRecord_records': CollapseRecord_records,
         'username':username,
-=======
-
-    return render(request, 'details_CollapseRecord.html', 
-    {
-        'CollapseRecord_records': CollapseRecord_records, 
->>>>>>> edb34653d679429b0461f4c57d1574c628cb1793
     }
     )
 
 def details_LandslideRecord(request):
-<<<<<<< HEAD
     username = request.COOKIES.get('name')
-=======
->>>>>>> edb34653d679429b0461f4c57d1574c628cb1793
     LandslideRecord_records = LandslideRecord.objects.all()
 
     return render(request, 'details_LandslideRecord.html', 
     {
-<<<<<<< HEAD
         'LandslideRecord_records': LandslideRecord_records,
         'username':username,
-=======
-        'LandslideRecord_records': LandslideRecord_records, 
->>>>>>> edb34653d679429b0461f4c57d1574c628cb1793
     }
     )
 
 def details_DebrisRecord(request):
     DebrisRecord_records = DebrisRecord.objects.all()
-<<<<<<< HEAD
     username = request.COOKIES.get('name')
     return render(request, 'details_DebrisRecord.html', 
     {
         'DebrisRecord_records': DebrisRecord_records,
-        'username':username,
-=======
-
-    return render(request, 'details_DebrisRecord.html', 
-    {
-        'DebrisRecord_records': DebrisRecord_records, 
->>>>>>> edb34653d679429b0461f4c57d1574c628cb1793
     }
     )
 
 def details_KarstRecord(request):
     KarstRecord_records = KarstRecord.objects.all()
-<<<<<<< HEAD
     username = request.COOKIES.get('name')
     return render(request, 'details_KarstRecord.html', 
     {
         'KarstRecord_records': KarstRecord_records,
         'username':username,
-=======
-
-    return render(request, 'details_KarstRecord.html', 
-    {
-        'KarstRecord_records': KarstRecord_records, 
->>>>>>> edb34653d679429b0461f4c57d1574c628cb1793
-    }
-    )
+    })
 
 def details_CrackRecord(request):
     CrackRecord_records = CrackRecord.objects.all()
-<<<<<<< HEAD
     username = request.COOKIES.get('name')
     return render(request, 'details_CrackRecord.html', 
     {
         'CrackRecord_records': CrackRecord_records,
         'username':username,
-=======
-
-    return render(request, 'details_CrackRecord.html', 
-    {
-        'CrackRecord_records': CrackRecord_records, 
->>>>>>> edb34653d679429b0461f4c57d1574c628cb1793
-    }
-    )
+    })
 
 def details_SettlementRecord(request):
     SettlementRecord_records = SettlementRecord.objects.all()
-<<<<<<< HEAD
     username = request.COOKIES.get('name')
     return render(request, 'details_SettlementRecord.html', 
     {
         'SettlementRecord_records': SettlementRecord_records,
         'username':username,
-=======
-
-    return render(request, 'details_SettlementRecord.html', 
-    {
-        'SettlementRecord_records': SettlementRecord_records, 
->>>>>>> edb34653d679429b0461f4c57d1574c628cb1793
     }
     )
 
 def details_OtherRecord(request):
     OtherRecord_records = OtherRecord.objects.all()
-<<<<<<< HEAD
     username = request.COOKIES.get('name')
     return render(request, 'details_OtherRecord.html', 
     {
         'OtherRecord_records': OtherRecord_records,
         'username':username,
-=======
-
-    return render(request, 'details_OtherRecord.html', 
-    {
-        'OtherRecord_records': OtherRecord_records, 
->>>>>>> edb34653d679429b0461f4c57d1574c628cb1793
-    }
-    )
+    })
 
 def details_DisasterInfo(request):
     DisasterInfo_records = DisasterInfo.objects.all()
-<<<<<<< HEAD
     username = request.COOKIES.get('name')
     return render(request, 'details_DisasterInfo.html', 
     {
         'DisasterInfo_records': DisasterInfo_records,
         'username':username,
-=======
-
-    return render(request, 'details_DisasterInfo.html', 
-    {
-        'DisasterInfo_records': DisasterInfo_records, 
->>>>>>> edb34653d679429b0461f4c57d1574c628cb1793
-    }
-    )
+    })
 
 def details_DisatserPrediction(request):
     DisatserPrediction_records = DisatserPrediction.objects.all()
-<<<<<<< HEAD
     username = request.COOKIES.get('name')
     return render(request, 'details_DisatserPrediction.html', 
     {
         'DisatserPrediction_records': DisatserPrediction_records,
         'username':username,
-=======
-
-    return render(request, 'details_DisatserPrediction.html', 
-    {
-        'DisatserPrediction_records': DisatserPrediction_records, 
->>>>>>> edb34653d679429b0461f4c57d1574c628cb1793
-    }
-    )
+    })
 
 def details_DisasterRequest(request):
     return details_DisasterRequest(request, False)
 
 def details_DisasterRequest(request,isSucceed=False):
     DisasterRequest_records = DisasterRequest.objects.all()
-<<<<<<< HEAD
     username = request.COOKIES.get('name')
     return render(request, 'details_DisasterRequest.html', 
     {
-        'DisasterRequest_records': DisasterRequest_records,
+        'DisasterRequest_records': DisasterRequest_records, 
+        'isSucceed': isSucceed,
         'username':username,
-=======
-    
-    return render(request, 'details_DisasterRequest.html', 
-    {
-<<<<<<< HEAD
-        'DisasterRequest_records': DisasterRequest_records, 'isSucceed': isSucceed,
-=======
-        'DisasterRequest_records': DisasterRequest_records, 'isSucceed': False,
->>>>>>> edb34653d679429b0461f4c57d1574c628cb1793
->>>>>>> 5a977d7883c7b4210ec2180305cbd1d9988ec2aa
-    }
-    )
+    })
 
 
 def index(request):
