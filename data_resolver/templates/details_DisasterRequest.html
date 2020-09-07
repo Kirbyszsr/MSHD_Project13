@@ -326,6 +326,9 @@
                       {% csrf_token %}
                       <input type="file" id="example-file-input" name="example-file-input">
                       <input type="submit" value="现在上传" />
+                      {% if isSucceed %}
+                      数据加载完成！
+	      {% endif %}
                     </div>
                     </form>
                 </div>
