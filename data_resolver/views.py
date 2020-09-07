@@ -507,13 +507,22 @@ def send_DeathStatics(request):
     for items in DeathStatics.objects.all():
          resultOBJ = {}
          resultOBJ["id"] = items.id
-         #resultOBJ["date"] = items.date
+         resultOBJ["date"] = items.date
          #resultOBJ["location"] = items.location
-         #resultOBJ["number"] = items.number
+         resultOBJ["number"] = items.number
          #resultOBJ["picture"] = items.picture
-         #resultOBJ["reporting_unit"] = items.reporting_unit
+         resultOBJ["reporting_unit"] = items.reporting_unit
          JS_Returnval = JS_Returnval + [resultOBJ]      
     return JsonResponse({"results":JS_Returnval})
+
+def sendcode_DeathStatics(request):
+    JS_Returnval = []
+    for items in DeathStatics.objects.all():
+         resultOBJ = {}
+         resultOBJ["id"] = items.id
+         JS_Returnval = JS_Returnval + [resultOBJ]      
+    return JsonResponse({"results":JS_Returnval})
+
 
 def insert_DeathStatics(request):
     d_statics = DeathStatics()
