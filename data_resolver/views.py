@@ -204,7 +204,7 @@ def verify(item):
             address_code = address_dictionary[key]
     if address_code is None:
         address_code = item['id'][0:12]
-    new_id = address_code + item['id'][12:15] + ('%03d' % sum)  + ('%1d' % random.randint(0,9))
+    new_id = address_code + item['id'][12:15] + ('%03d' % sum)  + ('%1d' % (int(address_code + item['id'][12:15]) /37 )% 10)
     #重新连接id
     item_checked['id'] = new_id
 
