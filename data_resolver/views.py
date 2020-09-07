@@ -19,7 +19,7 @@ from .models import DisasterInfo, DisatserPrediction, DisasterRequest
 from django.shortcuts import get_object_or_404,  render, redirect
 
 import copy
-
+import random
 from django.http import HttpResponseRedirect
 #from .models import day, todo
 from django.http import JsonResponse
@@ -204,7 +204,7 @@ def verify(item):
             address_code = address_dictionary[key]
     if address_code is None:
         address_code = item['id'][0:12]
-    new_id = address_code + item['id'][12:15] + ('%03d' % sum)  + '8'
+    new_id = address_code + item['id'][12:15] + ('%03d' % sum)  + ('%1d' % random.randint(0,9))
     #重新连接id
     item_checked['id'] = new_id
 
