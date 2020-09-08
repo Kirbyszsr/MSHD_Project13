@@ -25,14 +25,85 @@ urlpatterns = [
     path('del_DeathStatics',views.del_DeathStatics,name="del_DeathStatics"),
     path('insert_DeathStatics',views.insert_DeathStatics,name="insert_DeathStatics"),
     path('del_DeathStatics',views.insert_DeathStatics,name="insert_DeathStatics"),
+
+	#处理数据请求的url
     path('send_DeathStatics',views.send_DeathStatics,name="send_DeathStatics"),
     path('sendcode_DeathStatics',views.sendcode_DeathStatics,name="sendcode_DeathStatics"),
-    
+
+	path('send_InjuredStatics',views.send_InjuredStatics,name="send_InjuredStatics"),
+    path('sendcode_InjuredStatics',views.sendcode_InjuredStatics,name="sendcode_InjuredStatics"),
+
+	path('send_MissingStatics',views.send_MissingStatics,name="send_MissingStatics"),
+    path('sendcode_MissingStatics',views.sendcode_MissingStatics,name="sendcode_MissingStatics"),
+
+	path('send_CivilStructure',views.send_CivilStructure,name="send_CivilStructure"),
+    path('sendcode_CivilStructure',views.sendcode_CivilStructure,name="sendcode_CivilStructure"),
+
+	path('send_BrickwoodStructure',views.send_BrickwoodStructure,name="send_BrickwoodStructure"),
+    path('sendcode_BrickwoodStructure',views.sendcode_BrickwoodStructure,name="sendcode_BrickwoodStructure"),
+
+	path('send_MasonryStructure',views.send_MasonryStructure,name="send_MasonryStructure"),
+    path('sendcode_MasonryStructure',views.sendcode_MasonryStructure,name="sendcode_MasonryStructure"),
+
+	path('send_FrameworkStructure',views.send_FrameworkStructure,name="send_FrameworkStructure"),
+    path('sendcode_FrameworkStructure',views.sendcode_FrameworkStructure,name="sendcode_FrameworkStructure"),
+
+	path('send_OtherStructure',views.send_OtherStructure,name="send_OtherStructure"),
+    path('sendcode_OtherStructure',views.sendcode_OtherStructure,name="sendcode_OtherStructure"),
+
+	path('send_CommDisaster',views.send_CommDisaster,name="send_CommDisaster"),
+    path('sendcode_CommDisaster',views.sendcode_CommDisaster,name="sendcode_CommDisaster"),
+
+	path('send_TrafficDisaster',views.send_TrafficDisaster,name="send_TrafficDisaster"),
+    path('sendcode_TrafficDisaster',views.sendcode_TrafficDisaster,name="sendcode_TrafficDisaster"),
+
+	path('send_WaterDisaster',views.send_WaterDisaster,name="send_WaterDisaster"),
+    path('sendcode_WaterDisaster',views.sendcode_WaterDisaster,name="sendcode_WaterDisaster"),
+
+	path('send_OilDisaster',views.send_OilDisaster,name="send_OilDisaster"),
+    path('sendcode_OilDisaster',views.sendcode_OilDisaster,name="sendcode_OilDisaster"),
+
+	path('send_GasDisaster',views.send_GasDisaster,name="send_GasDisaster"),
+    path('sendcode_GasDisaster',views.sendcode_GasDisaster,name="sendcode_GasDisaster"),
+
+	path('send_PowerDisaster',views.send_PowerDisaster,name="send_PowerDisaster"),
+    path('sendcode_PowerDisaster',views.sendcode_PowerDisaster,name="sendcode_PowerDisaster"),
+
+	path('send_IrrigationDisaster',views.send_IrrigationDisaster,name="send_IrrigationDisaster"),
+    path('sendcode_IrrigationDisaster',views.sendcode_IrrigationDisaster,name="sendcode_IrrigationDisaster"),
+
+	path('send_CollapseRecord',views.send_CollapseRecord,name="send_CollapseRecord"),
+    path('sendcode_CollapseRecord',views.sendcode_CollapseRecord,name="sendcode_CollapseRecord"),
+
+	path('send_LandslideRecord',views.send_LandslideRecord,name="send_LandslideRecord"),
+    path('sendcode_LandslideRecord',views.sendcode_LandslideRecord,name="sendcode_LandslideRecord"),
+
+	path('send_DebrisRecord',views.send_DebrisRecord,name="send_DebrisRecord"),
+    path('sendcode_DebrisRecord',views.sendcode_DebrisRecord,name="sendcode_DebrisRecord"),
+
+	path('send_KarstRecord',views.send_KarstRecord,name="send_KarstRecord"),
+    path('sendcode_KarstRecord',views.sendcode_KarstRecord,name="sendcode_KarstRecord"),
+
+	path('send_CrackRecord',views.send_CrackRecord,name="send_CrackRecord"),
+    path('sendcode_CrackRecord',views.sendcode_CrackRecord,name="sendcode_CrackRecord"),
+
+	path('send_SettlementRecord',views.send_SettlementRecord,name="send_SettlementRecord"),
+    path('sendcode_SettlementRecord',views.sendcode_SettlementRecord,name="sendcode_SettlementRecord"),
+
+	path('send_OtherRecord',views.send_OtherRecord,name="send_SettlementRecord"),
+    path('sendcode_OtherRecord',views.sendcode_OtherRecord,name="sendcode_SettlementRecord"),
+
+	path('send_DisasterInfo',views.send_DisasterInfo,name="send_DisasterInfo"),
+    path('sendcode_DisasterInfo',views.sendcode_DisasterInfo,name="sendcode_DisasterInfo"),
+
+	path('send_DisatserPrediction',views.send_DisatserPrediction,name="send_DisatserPrediction"),
+    path('sendcode_DisatserPrediction',views.sendcode_DisatserPrediction,name="sendcode_DisatserPrediction"),
+
     # 人员受伤
     path('details_InjuredStatics',views.details_InjuredStatics,name="details_InjuredStatics"),
 	path('del_InjuredStatics',views.del_InjuredStatics,name="del_InjuredStatics"),
 	path('insert_InjuredStatics',views.insert_InjuredStatics,name="insert_InjuredStatics"),
-    
+
     # 人员失踪
     path('details_MissingStatics',views.details_MissingStatics,name="details_MissingStatics"),
 	path('del_MissingStatics',views.del_MissingStatics,name="del_MissingStatics"),

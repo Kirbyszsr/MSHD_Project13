@@ -523,6 +523,552 @@ def sendcode_DeathStatics(request):
     return JsonResponse({"results":JS_Returnval})
 
 
+def send_InjuredStatics(request):
+    JS_Returnval = []
+    for items in InjuredStatics.objects.all():
+         resultOBJ = {}
+         resultOBJ["id"] = items.id
+         resultOBJ["date"] = items.date
+         resultOBJ["location"] = items.location
+         resultOBJ["number"] = items.number
+         #resultOBJ["picture"] = items.picture
+         resultOBJ["reporting_unit"] = items.reporting_unit
+         JS_Returnval = JS_Returnval + [resultOBJ]
+    return JsonResponse({"results":JS_Returnval})
+
+def sendcode_InjuredStatics(request):
+    JS_Returnval = []
+    for items in InjuredStatics.objects.all():
+         resultOBJ = {}
+         resultOBJ["id"] = items.id
+         JS_Returnval = JS_Returnval + [resultOBJ]
+    return JsonResponse({"results":JS_Returnval})
+
+
+def send_MissingStatics(request):
+    JS_Returnval = []
+    for items in MissingStatics.objects.all():
+         resultOBJ = {}
+         resultOBJ["id"] = items.id
+         resultOBJ["date"] = items.date
+         resultOBJ["location"] = items.location
+         resultOBJ["number"] = items.number
+         #resultOBJ["picture"] = items.picture
+         resultOBJ["reporting_unit"] = items.reporting_unit
+         JS_Returnval = JS_Returnval + [resultOBJ]
+    return JsonResponse({"results":JS_Returnval})
+
+def sendcode_MissingStatics(request):
+    JS_Returnval = []
+    for items in MissingStatics.objects.all():
+         resultOBJ = {}
+         resultOBJ["id"] = items.id
+         JS_Returnval = JS_Returnval + [resultOBJ]
+    return JsonResponse({"results":JS_Returnval})
+
+def send_CivilStructure(request):
+    JS_Returnval = []
+    for items in CivilStructure.objects.all():
+         resultOBJ = {}
+         resultOBJ["id"] = items.id
+         resultOBJ["date"] = items.date
+         resultOBJ["location"] = items.location
+         resultOBJ['basically_intact_square'] = items.basically_intact_square
+         resultOBJ['damaged_square'] = items.damaged_square
+         resultOBJ['destroyed_square'] = items.destroyed_square
+         resultOBJ["note"] = items.note
+         #resultOBJ["picture"] = items.picture
+         resultOBJ["reporting_unit"] = items.reporting_unit
+         JS_Returnval = JS_Returnval + [resultOBJ]
+    return JsonResponse({"results":JS_Returnval})
+
+def sendcode_CivilStructure(request):
+    JS_Returnval = []
+    for items in CivilStructure.objects.all():
+         resultOBJ = {}
+         resultOBJ["id"] = items.id
+         JS_Returnval = JS_Returnval + [resultOBJ]
+    return JsonResponse({"results":JS_Returnval})
+
+
+def send_BrickwoodStructure(request):
+    JS_Returnval = []
+    for items in BrickwoodStructure.objects.all():
+         resultOBJ = {}
+         resultOBJ["id"] = items.id
+         resultOBJ["date"] = items.date
+         resultOBJ["location"] = items.location
+         resultOBJ['basically_intact_square'] = items.basically_intact_square
+         resultOBJ['damaged_square'] = items.damaged_square
+         resultOBJ['destroyed_square'] = items.destroyed_square
+         resultOBJ["note"] = items.note
+         #resultOBJ["picture"] = items.picture
+         resultOBJ["reporting_unit"] = items.reporting_unit
+         JS_Returnval = JS_Returnval + [resultOBJ]
+    return JsonResponse({"results":JS_Returnval})
+
+def sendcode_BrickwoodStructure(request):
+    JS_Returnval = []
+    for items in BrickwoodStructure.objects.all():
+         resultOBJ = {}
+         resultOBJ["id"] = items.id
+         JS_Returnval = JS_Returnval + [resultOBJ]
+    return JsonResponse({"results":JS_Returnval})
+
+def send_MasonryStructure(request):
+    JS_Returnval = []
+    for items in MasonryStructure.objects.all():
+         resultOBJ = {}
+         resultOBJ["id"] = items.id
+         resultOBJ["date"] = items.date
+         resultOBJ["location"] = items.location
+         resultOBJ['basically_intact_square'] = items.basically_intact_square
+         resultOBJ['slight_damaged_square'] = items.slight_damaged_square
+         resultOBJ['moderate_damaged_square'] = items.moderate_damaged_square
+         resultOBJ['serious_damaged_square'] = items.serious_damaged_square
+         resultOBJ['destroyed_square'] = items.destroyed_square
+         resultOBJ["note"] = items.note
+         #resultOBJ["picture"] = items.picture
+         resultOBJ["reporting_unit"] = items.reporting_unit
+         JS_Returnval = JS_Returnval + [resultOBJ]
+    return JsonResponse({"results":JS_Returnval})
+
+def sendcode_MasonryStructure(request):
+    JS_Returnval = []
+    for items in MasonryStructure.objects.all():
+         resultOBJ = {}
+         resultOBJ["id"] = items.id
+         JS_Returnval = JS_Returnval + [resultOBJ]
+    return JsonResponse({"results":JS_Returnval})
+
+
+def send_FrameworkStructure (request):
+    JS_Returnval = []
+    for items in FrameworkStructure.objects.all():
+         resultOBJ = {}
+         resultOBJ["id"] = items.id
+         resultOBJ["date"] = items.date
+         resultOBJ["location"] = items.location
+         resultOBJ['basically_intact_square'] = items.basically_intact_square
+         resultOBJ['slight_damaged_square'] = items.slight_damaged_square
+         resultOBJ['moderate_damaged_square'] = items.moderate_damaged_square
+         resultOBJ['serious_damaged_square'] = items.serious_damaged_square
+         resultOBJ['destroyed_square'] = items.destroyed_square
+         resultOBJ["note"] = items.note
+         #resultOBJ["picture"] = items.picture
+         resultOBJ["reporting_unit"] = items.reporting_unit
+         JS_Returnval = JS_Returnval + [resultOBJ]
+    return JsonResponse({"results":JS_Returnval})
+
+def sendcode_FrameworkStructure (request):
+    JS_Returnval = []
+    for items in FrameworkStructure.objects.all():
+         resultOBJ = {}
+         resultOBJ["id"] = items.id
+         JS_Returnval = JS_Returnval + [resultOBJ]
+    return JsonResponse({"results":JS_Returnval})
+
+def send_OtherStructure  (request):
+    JS_Returnval = []
+    for items in OtherStructure.objects.all():
+         resultOBJ = {}
+         resultOBJ["id"] = items.id
+         resultOBJ["date"] = items.date
+         resultOBJ["location"] = items.location
+         resultOBJ['basically_intact_square'] = items.basically_intact_square
+         resultOBJ['slight_damaged_square'] = items.slight_damaged_square
+         resultOBJ['moderate_damaged_square'] = items.moderate_damaged_square
+         resultOBJ['serious_damaged_square'] = items.serious_damaged_square
+         resultOBJ['destroyed_square'] = items.destroyed_square
+         resultOBJ["note"] = items.note
+         #resultOBJ["picture"] = items.picture
+         resultOBJ["reporting_unit"] = items.reporting_unit
+         JS_Returnval = JS_Returnval + [resultOBJ]
+    return JsonResponse({"results":JS_Returnval})
+
+def sendcode_OtherStructure  (request):
+    JS_Returnval = []
+    for items in OtherStructure.objects.all():
+         resultOBJ = {}
+         resultOBJ["id"] = items.id
+         JS_Returnval = JS_Returnval + [resultOBJ]
+    return JsonResponse({"results":JS_Returnval})
+
+def send_CommDisaster  (request):
+    JS_Returnval = []
+    for items in CommDisaster.objects.all():
+         resultOBJ = {}
+         resultOBJ["id"] = items.id
+         resultOBJ["date"] = items.date
+         resultOBJ["location"] = items.location
+         resultOBJ['type'] = items.type
+         resultOBJ['grade'] = items.grade
+         resultOBJ["note"] = items.note
+         #resultOBJ["picture"] = items.picture
+         resultOBJ["reporting_unit"] = items.reporting_unit
+         JS_Returnval = JS_Returnval + [resultOBJ]
+    return JsonResponse({"results":JS_Returnval})
+
+def sendcode_CommDisaster  (request):
+    JS_Returnval = []
+    for items in CommDisaster.objects.all():
+         resultOBJ = {}
+         resultOBJ["id"] = items.id
+         JS_Returnval = JS_Returnval + [resultOBJ]
+    return JsonResponse({"results":JS_Returnval})
+
+
+
+def send_TrafficDisaster  (request):
+    JS_Returnval = []
+    for items in TrafficDisaster.objects.all():
+         resultOBJ = {}
+         resultOBJ["id"] = items.id
+         resultOBJ["date"] = items.date
+         resultOBJ["location"] = items.location
+         resultOBJ['type'] = items.type
+         resultOBJ['grade'] = items.grade
+         resultOBJ["note"] = items.note
+         #resultOBJ["picture"] = items.picture
+         resultOBJ["reporting_unit"] = items.reporting_unit
+         JS_Returnval = JS_Returnval + [resultOBJ]
+    return JsonResponse({"results":JS_Returnval})
+
+def sendcode_TrafficDisaster  (request):
+    JS_Returnval = []
+    for items in TrafficDisaster.objects.all():
+         resultOBJ = {}
+         resultOBJ["id"] = items.id
+         JS_Returnval = JS_Returnval + [resultOBJ]
+    return JsonResponse({"results":JS_Returnval})
+
+def send_WaterDisaster  (request):
+    JS_Returnval = []
+    for items in WaterDisaster.objects.all():
+         resultOBJ = {}
+         resultOBJ["id"] = items.id
+         resultOBJ["date"] = items.date
+         resultOBJ["location"] = items.location
+         resultOBJ['type'] = items.type
+         resultOBJ['grade'] = items.grade
+         resultOBJ["note"] = items.note
+         #resultOBJ["picture"] = items.picture
+         resultOBJ["reporting_unit"] = items.reporting_unit
+         JS_Returnval = JS_Returnval + [resultOBJ]
+    return JsonResponse({"results":JS_Returnval})
+
+def sendcode_WaterDisaster  (request):
+    JS_Returnval = []
+    for items in WaterDisaster.objects.all():
+         resultOBJ = {}
+         resultOBJ["id"] = items.id
+         JS_Returnval = JS_Returnval + [resultOBJ]
+    return JsonResponse({"results":JS_Returnval})
+
+
+def send_OilDisaster  (request):
+    JS_Returnval = []
+    for items in OilDisaster.objects.all():
+         resultOBJ = {}
+         resultOBJ["id"] = items.id
+         resultOBJ["date"] = items.date
+         resultOBJ["location"] = items.location
+         resultOBJ['type'] = items.type
+         resultOBJ['grade'] = items.grade
+         resultOBJ["note"] = items.note
+         #resultOBJ["picture"] = items.picture
+         resultOBJ["reporting_unit"] = items.reporting_unit
+         JS_Returnval = JS_Returnval + [resultOBJ]
+    return JsonResponse({"results":JS_Returnval})
+
+def sendcode_OilDisaster (request):
+    JS_Returnval = []
+    for items in OilDisaster.objects.all():
+         resultOBJ = {}
+         resultOBJ["id"] = items.id
+         JS_Returnval = JS_Returnval + [resultOBJ]
+    return JsonResponse({"results":JS_Returnval})
+
+
+def send_GasDisaster (request):
+    JS_Returnval = []
+    for items in GasDisaster.objects.all():
+         resultOBJ = {}
+         resultOBJ["id"] = items.id
+         resultOBJ["date"] = items.date
+         resultOBJ["location"] = items.location
+         resultOBJ['type'] = items.type
+         resultOBJ['grade'] = items.grade
+         resultOBJ["note"] = items.note
+         #resultOBJ["picture"] = items.picture
+         resultOBJ["reporting_unit"] = items.reporting_unit
+         JS_Returnval = JS_Returnval + [resultOBJ]
+    return JsonResponse({"results":JS_Returnval})
+
+def sendcode_GasDisaster (request):
+    JS_Returnval = []
+    for items in GasDisaster.objects.all():
+         resultOBJ = {}
+         resultOBJ["id"] = items.id
+         JS_Returnval = JS_Returnval + [resultOBJ]
+    return JsonResponse({"results":JS_Returnval})
+
+def send_PowerDisaster (request):
+    JS_Returnval = []
+    for items in PowerDisaster.objects.all():
+         resultOBJ = {}
+         resultOBJ["id"] = items.id
+         resultOBJ["date"] = items.date
+         resultOBJ["location"] = items.location
+         resultOBJ['type'] = items.type
+         resultOBJ['grade'] = items.grade
+         resultOBJ["note"] = items.note
+         #resultOBJ["picture"] = items.picture
+         resultOBJ["reporting_unit"] = items.reporting_unit
+         JS_Returnval = JS_Returnval + [resultOBJ]
+    return JsonResponse({"results":JS_Returnval})
+
+def sendcode_PowerDisaster (request):
+    JS_Returnval = []
+    for items in PowerDisaster.objects.all():
+         resultOBJ = {}
+         resultOBJ["id"] = items.id
+         JS_Returnval = JS_Returnval + [resultOBJ]
+    return JsonResponse({"results":JS_Returnval})
+
+def send_IrrigationDisaster (request):
+    JS_Returnval = []
+    for items in IrrigationDisaster.objects.all():
+         resultOBJ = {}
+         resultOBJ["id"] = items.id
+         resultOBJ["date"] = items.date
+         resultOBJ["location"] = items.location
+         resultOBJ['type'] = items.type
+         resultOBJ['grade'] = items.grade
+         resultOBJ["note"] = items.note
+         #resultOBJ["picture"] = items.picture
+         resultOBJ["reporting_unit"] = items.reporting_unit
+         JS_Returnval = JS_Returnval + [resultOBJ]
+    return JsonResponse({"results":JS_Returnval})
+
+def sendcode_IrrigationDisaster (request):
+    JS_Returnval = []
+    for items in IrrigationDisaster.objects.all():
+         resultOBJ = {}
+         resultOBJ["id"] = items.id
+         JS_Returnval = JS_Returnval + [resultOBJ]
+    return JsonResponse({"results":JS_Returnval})
+
+def send_CollapseRecord (request):
+    JS_Returnval = []
+    for items in CollapseRecord.objects.all():
+         resultOBJ = {}
+         resultOBJ["id"] = items.id
+         resultOBJ["date"] = items.date
+         resultOBJ["location"] = items.location
+         resultOBJ['type'] = items.type
+         resultOBJ['status'] = items.status
+         resultOBJ["note"] = items.note
+         #resultOBJ["picture"] = items.picture
+         resultOBJ["reporting_unit"] = items.reporting_unit
+         JS_Returnval = JS_Returnval + [resultOBJ]
+    return JsonResponse({"results":JS_Returnval})
+
+def sendcode_CollapseRecord (request):
+    JS_Returnval = []
+    for items in CollapseRecord.objects.all():
+         resultOBJ = {}
+         resultOBJ["id"] = items.id
+         JS_Returnval = JS_Returnval + [resultOBJ]
+    return JsonResponse({"results":JS_Returnval})
+
+def send_LandslideRecord(request):
+    JS_Returnval = []
+    for items in LandslideRecord.objects.all():
+         resultOBJ = {}
+         resultOBJ["id"] = items.id
+         resultOBJ["date"] = items.date
+         resultOBJ["location"] = items.location
+         resultOBJ['type'] = items.type
+         resultOBJ['status'] = items.status
+         resultOBJ["note"] = items.note
+         #resultOBJ["picture"] = items.picture
+         resultOBJ["reporting_unit"] = items.reporting_unit
+         JS_Returnval = JS_Returnval + [resultOBJ]
+    return JsonResponse({"results":JS_Returnval})
+
+def sendcode_LandslideRecord (request):
+    JS_Returnval = []
+    for items in LandslideRecord.objects.all():
+         resultOBJ = {}
+         resultOBJ["id"] = items.id
+         JS_Returnval = JS_Returnval + [resultOBJ]
+    return JsonResponse({"results":JS_Returnval})
+
+def send_DebrisRecord(request):
+    JS_Returnval = []
+    for items in DebrisRecord.objects.all():
+         resultOBJ = {}
+         resultOBJ["id"] = items.id
+         resultOBJ["date"] = items.date
+         resultOBJ["location"] = items.location
+         resultOBJ['type'] = items.type
+         resultOBJ['status'] = items.status
+         resultOBJ["note"] = items.note
+         #resultOBJ["picture"] = items.picture
+         resultOBJ["reporting_unit"] = items.reporting_unit
+         JS_Returnval = JS_Returnval + [resultOBJ]
+    return JsonResponse({"results":JS_Returnval})
+
+def sendcode_DebrisRecord (request):
+    JS_Returnval = []
+    for items in LandslideRecord.objects.all():
+         resultOBJ = {}
+         resultOBJ["id"] = items.id
+         JS_Returnval = JS_Returnval + [resultOBJ]
+    return JsonResponse({"results":JS_Returnval})
+
+def send_KarstRecord(request):
+    JS_Returnval = []
+    for items in KarstRecord.objects.all():
+         resultOBJ = {}
+         resultOBJ["id"] = items.id
+         resultOBJ["date"] = items.date
+         resultOBJ["location"] = items.location
+         resultOBJ['type'] = items.type
+         resultOBJ['status'] = items.status
+         resultOBJ["note"] = items.note
+         #resultOBJ["picture"] = items.picture
+         resultOBJ["reporting_unit"] = items.reporting_unit
+         JS_Returnval = JS_Returnval + [resultOBJ]
+    return JsonResponse({"results":JS_Returnval})
+
+def sendcode_KarstRecord (request):
+    JS_Returnval = []
+    for items in KarstRecord.objects.all():
+         resultOBJ = {}
+         resultOBJ["id"] = items.id
+         JS_Returnval = JS_Returnval + [resultOBJ]
+    return JsonResponse({"results":JS_Returnval})
+
+def send_CrackRecord(request):
+    JS_Returnval = []
+    for items in CrackRecord.objects.all():
+         resultOBJ = {}
+         resultOBJ["id"] = items.id
+         resultOBJ["date"] = items.date
+         resultOBJ["location"] = items.location
+         resultOBJ['type'] = items.type
+         resultOBJ['status'] = items.status
+         resultOBJ["note"] = items.note
+         #resultOBJ["picture"] = items.picture
+         resultOBJ["reporting_unit"] = items.reporting_unit
+         JS_Returnval = JS_Returnval + [resultOBJ]
+    return JsonResponse({"results":JS_Returnval})
+
+def sendcode_CrackRecord(request):
+    JS_Returnval = []
+    for items in CrackRecord.objects.all():
+         resultOBJ = {}
+         resultOBJ["id"] = items.id
+         JS_Returnval = JS_Returnval + [resultOBJ]
+    return JsonResponse({"results":JS_Returnval})
+
+def send_SettlementRecord(request):
+    JS_Returnval = []
+    for items in SettlementRecord.objects.all():
+         resultOBJ = {}
+         resultOBJ["id"] = items.id
+         resultOBJ["date"] = items.date
+         resultOBJ["location"] = items.location
+         resultOBJ['type'] = items.type
+         resultOBJ['status'] = items.status
+         resultOBJ["note"] = items.note
+         #resultOBJ["picture"] = items.picture
+         resultOBJ["reporting_unit"] = items.reporting_unit
+         JS_Returnval = JS_Returnval + [resultOBJ]
+    return JsonResponse({"results":JS_Returnval})
+
+def sendcode_SettlementRecord(request):
+    JS_Returnval = []
+    for items in SettlementRecord.objects.all():
+         resultOBJ = {}
+         resultOBJ["id"] = items.id
+         JS_Returnval = JS_Returnval + [resultOBJ]
+    return JsonResponse({"results":JS_Returnval})
+
+def send_OtherRecord(request):
+    JS_Returnval = []
+    for items in OtherRecord.objects.all():
+         resultOBJ = {}
+         resultOBJ["id"] = items.id
+         resultOBJ["date"] = items.date
+         resultOBJ["location"] = items.location
+         resultOBJ['type'] = items.type
+         resultOBJ['status'] = items.status
+         resultOBJ["note"] = items.note
+         #resultOBJ["picture"] = items.picture
+         resultOBJ["reporting_unit"] = items.reporting_unit
+         JS_Returnval = JS_Returnval + [resultOBJ]
+    return JsonResponse({"results":JS_Returnval})
+
+def sendcode_OtherRecord(request):
+    JS_Returnval = []
+    for items in OtherRecord.objects.all():
+         resultOBJ = {}
+         resultOBJ["id"] = items.id
+         JS_Returnval = JS_Returnval + [resultOBJ]
+    return JsonResponse({"results":JS_Returnval})
+
+
+def send_DisasterInfo(request):
+    JS_Returnval = []
+    for items in DisasterInfo.objects.all():
+         resultOBJ = {}
+         resultOBJ["id"] = items.id
+         resultOBJ["date"] = items.date
+         resultOBJ["location"] = items.location
+         resultOBJ['longitude'] = items.longitude
+         resultOBJ['latitude'] = items.latitude
+         resultOBJ['depth'] = items.depth
+         resultOBJ['magnitude'] = items.magnitude
+         #resultOBJ["picture"] = items.picture
+         resultOBJ["reporting_unit"] = items.reporting_unit
+         JS_Returnval = JS_Returnval + [resultOBJ]
+    return JsonResponse({"results":JS_Returnval})
+
+def sendcode_DisasterInfo(request):
+    JS_Returnval = []
+    for items in DisasterInfo.objects.all():
+         resultOBJ = {}
+         resultOBJ["id"] = items.id
+         JS_Returnval = JS_Returnval + [resultOBJ]
+    return JsonResponse({"results":JS_Returnval})
+
+def send_DisatserPrediction(request):
+    JS_Returnval = []
+    for items in DisatserPrediction.objects.all():
+         resultOBJ = {}
+         resultOBJ["id"] = items.id
+         resultOBJ["date"] = items.date
+         resultOBJ["location"] = items.location
+         resultOBJ['longitude'] = items.longitude
+         resultOBJ['latitude'] = items.latitude
+         resultOBJ['depth'] = items.depth
+         resultOBJ['magnitude'] = items.magnitude
+         #resultOBJ["picture"] = items.picture
+         resultOBJ["reporting_unit"] = items.reporting_unit
+         JS_Returnval = JS_Returnval + [resultOBJ]
+    return JsonResponse({"results":JS_Returnval})
+
+def sendcode_DisatserPrediction(request):
+    JS_Returnval = []
+    for items in DisatserPrediction.objects.all():
+         resultOBJ = {}
+         resultOBJ["id"] = items.id
+         JS_Returnval = JS_Returnval + [resultOBJ]
+    return JsonResponse({"results":JS_Returnval})
+
 def insert_DeathStatics(request):
     d_statics = DeathStatics()
     # 创建对象
